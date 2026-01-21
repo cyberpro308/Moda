@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEN'S LUXE — Products</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>MEN'S LUXE</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html" class="active">Shop</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <h2>Shop Men's Collection</h2>
+    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+  </section>
+
+  <div class="products-grid" id="productList">
+
+    <!-- Product 1 -->
+    <div class="product-card" data-name="Executive Leather Jacket">
+      <img src="https://images.pexels.com/photos/532588/pexels-photo-532588.jpeg" alt="Jacket">
+      <h3>Executive Leather Jacket</h3>
+      <p class="price">$120</p>
+      <button onclick="addToCart('Executive Leather Jacket', 120, 'https://images.pexels.com/photos/532588/pexels-photo-532588.jpeg')">Add to Cart</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card" data-name="Classic Fitted Shirt">
+      <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg" alt="Shirt">
+      <h3>Classic Fitted Shirt</h3>
+      <p class="price">$45</p>
+      <button onclick="addToCart('Classic Fitted Shirt', 45, 'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg')">Add to Cart</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card" data-name="Italian Leather Shoes">
+      <img src="https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg" alt="Shoes">
+      <h3>Italian Leather Shoes</h3>
+      <p class="price">$180</p>
+      <button onclick="addToCart('Italian Leather Shoes', 180, 'https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg')">Add to Cart</button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card" data-name="Premium 2-Piece Suit">
+      <img src="https://images.pexels.com/photos/2983461/pexels-photo-2983461.jpeg" alt="Suit">
+      <h3>Premium 2-Piece Suit</h3>
+      <p class="price">$260</p>
+      <button onclick="addToCart('Premium 2-Piece Suit', 260, 'https://images.pexels.com/photos/2983461/pexels-photo-2983461.jpeg')">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
