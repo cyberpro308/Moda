@@ -1,63 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEN'S LUXE — Products</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>MODA Atelier | Product Details</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <header>
-    <h1>MEN'S LUXE</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="products.html" class="active">Shop</a>
-      <a href="cart.html">Cart</a>
-      <a href="login.html">Login</a>
-    </nav>
+<body data-page="product">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="ambient-bg" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="MODA Atelier Home">
+        MODA <span>Atelier</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="index.html#collections">Collections</a>
+        <a href="index.html#arrivals">New Arrivals</a>
+        <a href="index.html#catalog">Shop</a>
+        <a href="index.html#journal">Journal</a>
+      </nav>
+
+      <div class="header-tools">
+        <button class="icon-btn" id="wishlistBtn" type="button" aria-label="Open wishlist summary">
+          Wishlist
+          <span class="badge" id="wishlistBadge">0</span>
+        </button>
+        <button class="icon-btn" id="cartBtn" type="button" aria-label="Open bag">
+          Bag
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <button class="icon-btn nav-toggle" id="mobileNavToggle" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+          Menu
+        </button>
+      </div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true">
+      <span id="scrollProgress"></span>
+    </div>
   </header>
 
-  <section class="page-header">
-    <h2>Shop Men's Collection</h2>
-    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
-  </section>
+  <div class="overlay" id="mobileNavOverlay" hidden></div>
+  <aside class="mobile-nav" id="mobileNav" hidden aria-label="Mobile navigation" role="dialog" aria-modal="true">
+    <div class="mobile-nav-head">
+      <p>Navigate</p>
+      <button class="icon-btn" id="closeMobileNavBtn" type="button" aria-label="Close menu">Close</button>
+    </div>
+    <nav class="mobile-links" aria-label="Mobile links">
+      <a href="index.html#collections">Collections</a>
+      <a href="index.html#arrivals">New Arrivals</a>
+      <a href="index.html#catalog">Shop Catalog</a>
+      <a href="index.html#journal">Style Journal</a>
+    </nav>
+  </aside>
 
-  <div class="products-grid" id="productList">
-
-    <!-- Product 1 -->
-    <div class="product-card" data-name="Executive Leather Jacket">
-      <img src="https://images.pexels.com/photos/532588/pexels-photo-532588.jpeg" alt="Jacket">
-      <h3>Executive Leather Jacket</h3>
-      <p class="price">$120</p>
-      <button onclick="addToCart('Executive Leather Jacket', 120, 'https://images.pexels.com/photos/532588/pexels-photo-532588.jpeg')">Add to Cart</button>
+  <div class="overlay" id="wishlistOverlay" hidden></div>
+  <aside class="cart-drawer wishlist-drawer" id="wishlistDrawer" hidden aria-label="Wishlist" role="dialog" aria-modal="true">
+    <div class="panel-head">
+      <div>
+        <h2>Wishlist</h2>
+        <p>Saved pieces ready when you are.</p>
+      </div>
+      <button class="icon-btn" id="closeWishlistBtn" type="button" aria-label="Close wishlist">Close</button>
     </div>
 
-    <!-- Product 2 -->
-    <div class="product-card" data-name="Classic Fitted Shirt">
-      <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg" alt="Shirt">
-      <h3>Classic Fitted Shirt</h3>
-      <p class="price">$45</p>
-      <button onclick="addToCart('Classic Fitted Shirt', 45, 'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg')">Add to Cart</button>
+    <div class="cart-items" id="wishlistItems"></div>
+
+    <div class="panel-foot">
+      <div class="totals-row">
+        <span>Saved items</span>
+        <strong id="wishlistCount">0</strong>
+      </div>
+      <button class="btn btn-primary" id="addWishlistToCartBtn" type="button">Add all to bag</button>
+    </div>
+  </aside>
+
+  <div class="overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" hidden aria-label="Shopping bag" role="dialog" aria-modal="true">
+    <div class="panel-head">
+      <div>
+        <h2>Your Bag</h2>
+        <p>Review your picks before checkout.</p>
+      </div>
+      <button class="icon-btn" id="closeCartBtn" type="button" aria-label="Close bag">Close</button>
     </div>
 
-    <!-- Product 3 -->
-    <div class="product-card" data-name="Italian Leather Shoes">
-      <img src="https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg" alt="Shoes">
-      <h3>Italian Leather Shoes</h3>
-      <p class="price">$180</p>
-      <button onclick="addToCart('Italian Leather Shoes', 180, 'https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg')">Add to Cart</button>
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="panel-foot">
+      <div class="totals-row">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">$0.00</strong>
+      </div>
+      <button class="btn btn-primary" id="checkoutBtn" type="button">Checkout</button>
     </div>
+  </aside>
 
-    <!-- Product 4 -->
-    <div class="product-card" data-name="Premium 2-Piece Suit">
-      <img src="https://images.pexels.com/photos/2983461/pexels-photo-2983461.jpeg" alt="Suit">
-      <h3>Premium 2-Piece Suit</h3>
-      <p class="price">$260</p>
-      <button onclick="addToCart('Premium 2-Piece Suit', 260, 'https://images.pexels.com/photos/2983461/pexels-photo-2983461.jpeg')">Add to Cart</button>
+  <div class="overlay" id="modalOverlay" hidden></div>
+  <aside class="quick-modal" id="quickModal" hidden aria-label="Quick view" role="dialog" aria-modal="true">
+    <button class="quick-close" id="closeQuickModalBtn" type="button" aria-label="Close quick view">Close</button>
+    <div id="quickModalBody"></div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <main id="main-content">
+    <section class="section product-section">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="index.html#catalog">Catalog</a>
+          <span>/</span>
+          <strong id="crumbProduct">Product</strong>
+        </nav>
+
+        <div id="productDetail" class="product-detail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="related">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">You may also like</p>
+          <h2>Related picks</h2>
+          <p>Similar pieces curated from the same style lane.</p>
+        </div>
+        <div class="product-grid" id="relatedGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div>
+        <p class="footer-brand">MODA Atelier</p>
+        <p>Elevated fashion for modern routines.</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="index.html#catalog">Shop</a>
+        <a href="index.html#journal">Journal</a>
+      </div>
     </div>
+  </footer>
 
-  </div>
-
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
