@@ -4,150 +4,255 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
-  <title>MODA Atelier | Product Details</title>
+  <meta name="description" content="Product details — MODA Atelier. Premium, editorial fashion with fast delivery and easy returns." />
+  <meta name="theme-color" content="#13110f" />
+  <title>Product — MODA Atelier</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-page="product">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="ambient-bg" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" id="siteHeader">
-    <div class="container header-row">
-      <a class="brand" href="index.html" aria-label="MODA Atelier Home">
-        MODA <span>Atelier</span>
+  <!-- ============ Announcement bar ============ -->
+  <div class="announce" id="announce">
+    <div class="container announce__inner">
+      <span class="announce__static">Complimentary shipping over $150</span>
+      <div class="announce__viewport">
+        <div class="announce__track" id="announceTrack">
+          <p class="announce__msg">Spring 2026 has landed — explore the new collection</p>
+          <p class="announce__msg">Use code <strong>WELCOME15</strong> for 15% off your first order</p>
+          <p class="announce__msg">30-day easy returns, always</p>
+        </div>
+      </div>
+      <button class="announce__close" id="announceClose" type="button" aria-label="Dismiss announcement" data-icon="close"></button>
+    </div>
+  </div>
+
+  <!-- ============ Header ============ -->
+  <header class="header" id="header">
+    <div class="container header__row">
+      <button class="iconbtn header__menu" id="mobileNavToggle" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false" data-icon="menu"></button>
+
+      <a class="brand" href="index.html" aria-label="MODA Atelier home">
+        <span class="brand__mark">MODA</span><span class="brand__sub">Atelier</span>
       </a>
 
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="index.html#collections">Collections</a>
-        <a href="index.html#arrivals">New Arrivals</a>
-        <a href="index.html#catalog">Shop</a>
-        <a href="index.html#journal">Journal</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#shop">Women</a>
+        <a href="index.html#shop">Men</a>
+        <a href="index.html#shop">Outerwear</a>
+        <a href="index.html#shop">Shoes</a>
+        <a href="index.html#shop">Accessories</a>
+        <a href="index.html#lookbook">Lookbook</a>
       </nav>
 
-      <div class="header-tools">
-        <button class="icon-btn" id="wishlistBtn" type="button" aria-label="Open wishlist summary">
-          Wishlist
-          <span class="badge" id="wishlistBadge">0</span>
-        </button>
-        <button class="icon-btn" id="cartBtn" type="button" aria-label="Open bag">
-          Bag
-          <span class="badge" id="cartBadge">0</span>
-        </button>
-        <button class="icon-btn nav-toggle" id="mobileNavToggle" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
-          Menu
-        </button>
+      <div class="header__tools">
+        <button class="iconbtn" id="searchBtn" type="button" aria-label="Search"><span data-icon="search"></span></button>
+        <button class="iconbtn header__hide-sm" type="button" aria-label="Account"><span data-icon="user"></span></button>
+        <button class="iconbtn" id="wishBtn" type="button" aria-label="Open wishlist"><span data-icon="heart"></span><span class="dot" id="wishBadge">0</span></button>
+        <button class="iconbtn" id="cartBtn" type="button" aria-label="Open bag"><span data-icon="bag"></span><span class="dot" id="cartBadge">0</span></button>
       </div>
     </div>
-    <div class="scroll-progress" aria-hidden="true">
-      <span id="scrollProgress"></span>
-    </div>
+    <span class="progress" id="progress" aria-hidden="true"></span>
   </header>
 
+  <!-- ============ Mobile nav ============ -->
   <div class="overlay" id="mobileNavOverlay" hidden></div>
-  <aside class="mobile-nav" id="mobileNav" hidden aria-label="Mobile navigation" role="dialog" aria-modal="true">
-    <div class="mobile-nav-head">
-      <p>Navigate</p>
-      <button class="icon-btn" id="closeMobileNavBtn" type="button" aria-label="Close menu">Close</button>
+  <aside class="drawer drawer--left js-panel" id="mobileNav" hidden role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer__head">
+      <span class="brand"><span class="brand__mark">MODA</span></span>
+      <button class="iconbtn" id="closeMobileNavBtn" type="button" aria-label="Close menu" data-icon="close"></button>
     </div>
-    <nav class="mobile-links" aria-label="Mobile links">
-      <a href="index.html#collections">Collections</a>
-      <a href="index.html#arrivals">New Arrivals</a>
-      <a href="index.html#catalog">Shop Catalog</a>
-      <a href="index.html#journal">Style Journal</a>
+    <nav class="mnav" aria-label="Mobile">
+      <a href="index.html#shop">Women</a>
+      <a href="index.html#shop">Men</a>
+      <a href="index.html#shop">Outerwear</a>
+      <a href="index.html#shop">Active</a>
+      <a href="index.html#shop">Shoes</a>
+      <a href="index.html#shop">Accessories</a>
+      <a href="index.html#lookbook">Lookbook</a>
     </nav>
+    <div class="mnav__foot">
+      <p>Members get early access to every drop.</p>
+      <form class="inline-form js-newsletter">
+        <input type="email" placeholder="Email address" aria-label="Email address" required />
+        <button class="btn btn--primary" type="submit">Join</button>
+      </form>
+    </div>
   </aside>
 
-  <div class="overlay" id="wishlistOverlay" hidden></div>
-  <aside class="cart-drawer wishlist-drawer" id="wishlistDrawer" hidden aria-label="Wishlist" role="dialog" aria-modal="true">
-    <div class="panel-head">
+  <!-- ============ Search modal ============ -->
+  <div class="overlay" id="searchOverlay" hidden></div>
+  <aside class="search js-panel" id="searchModal" hidden role="dialog" aria-modal="true" aria-label="Search">
+    <div class="container search__inner">
+      <form class="search__bar" role="search" onsubmit="return false;">
+        <span class="search__icon" data-icon="search"></span>
+        <input type="search" id="searchInput" placeholder="Search for pieces, colours, materials…" aria-label="Search products" autocomplete="off" data-autofocus />
+        <button class="iconbtn" id="closeSearchBtn" type="button" aria-label="Close search" data-icon="close"></button>
+      </form>
+      <div class="search__results" id="searchResults">
+        <p class="search__hint">Popular:
+          <button type="button" class="search__sug" data-sug="Dresses">Dresses</button>
+          <button type="button" class="search__sug" data-sug="Blazer">Blazer</button>
+          <button type="button" class="search__sug" data-sug="Sneaker">Sneaker</button>
+          <button type="button" class="search__sug" data-sug="Tote">Tote</button>
+          <button type="button" class="search__sug" data-sug="Cashmere">Cashmere</button>
+        </p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ Wishlist drawer ============ -->
+  <div class="overlay" id="wishOverlay" hidden></div>
+  <aside class="drawer js-panel" id="wishDrawer" hidden role="dialog" aria-modal="true" aria-label="Wishlist">
+    <div class="drawer__head">
       <div>
-        <h2>Wishlist</h2>
-        <p>Saved pieces ready when you are.</p>
+        <h2 class="drawer__title">Wishlist</h2>
+        <p class="drawer__sub"><span id="wishCount">0</span> saved pieces</p>
       </div>
-      <button class="icon-btn" id="closeWishlistBtn" type="button" aria-label="Close wishlist">Close</button>
+      <button class="iconbtn" id="closeWishBtn" type="button" aria-label="Close wishlist" data-icon="close"></button>
     </div>
-
-    <div class="cart-items" id="wishlistItems"></div>
-
-    <div class="panel-foot">
-      <div class="totals-row">
-        <span>Saved items</span>
-        <strong id="wishlistCount">0</strong>
-      </div>
-      <button class="btn btn-primary" id="addWishlistToCartBtn" type="button">Add all to bag</button>
+    <div class="drawer__body" id="wishItems"></div>
+    <div class="drawer__foot" id="wishFoot" hidden>
+      <button class="btn btn--primary btn--block" id="wishAddAll" type="button">Add all to bag</button>
     </div>
   </aside>
 
+  <!-- ============ Cart drawer ============ -->
   <div class="overlay" id="cartOverlay" hidden></div>
-  <aside class="cart-drawer" id="cartDrawer" hidden aria-label="Shopping bag" role="dialog" aria-modal="true">
-    <div class="panel-head">
+  <aside class="drawer js-panel" id="cartDrawer" hidden role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <div class="drawer__head">
       <div>
-        <h2>Your Bag</h2>
-        <p>Review your picks before checkout.</p>
+        <h2 class="drawer__title">Your bag</h2>
+        <p class="drawer__sub">Review before checkout</p>
       </div>
-      <button class="icon-btn" id="closeCartBtn" type="button" aria-label="Close bag">Close</button>
+      <button class="iconbtn" id="closeCartBtn" type="button" aria-label="Close bag" data-icon="close"></button>
     </div>
-
-    <div class="cart-items" id="cartItems"></div>
-
-    <div class="panel-foot">
-      <div class="totals-row">
-        <span>Subtotal</span>
-        <strong id="cartSubtotal">$0.00</strong>
+    <div class="ship" id="shipBar" hidden>
+      <p class="ship__msg" id="shipMsg"></p>
+      <span class="ship__bar"><span class="ship__fill" id="shipFill"></span></span>
+    </div>
+    <div class="drawer__body" id="cartItems"></div>
+    <div class="drawer__foot" id="cartFoot" hidden>
+      <form class="promo" id="promoForm">
+        <input type="text" id="promoInput" placeholder="Promo code" aria-label="Promo code" autocomplete="off" />
+        <button class="btn btn--ghost" type="submit">Apply</button>
+      </form>
+      <div class="totals">
+        <div class="totals__row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+        <div class="totals__row totals__row--save" id="cartDiscountRow" hidden><span>Discount</span><span id="cartDiscount">$0.00</span></div>
+        <div class="totals__row"><span>Shipping</span><span id="cartShipping">Free</span></div>
+        <div class="totals__row totals__row--total"><span>Total</span><span id="cartTotal">$0.00</span></div>
       </div>
-      <button class="btn btn-primary" id="checkoutBtn" type="button">Checkout</button>
+      <button class="btn btn--primary btn--block btn--lg" id="checkoutBtn" type="button">Checkout</button>
+      <p class="drawer__note"><span data-icon="shield"></span> Secure, encrypted checkout</p>
     </div>
   </aside>
 
+  <!-- ============ Quick view modal ============ -->
   <div class="overlay" id="modalOverlay" hidden></div>
-  <aside class="quick-modal" id="quickModal" hidden aria-label="Quick view" role="dialog" aria-modal="true">
-    <button class="quick-close" id="closeQuickModalBtn" type="button" aria-label="Close quick view">Close</button>
-    <div id="quickModalBody"></div>
+  <aside class="modal js-panel" id="quickModal" hidden role="dialog" aria-modal="true" aria-label="Quick view">
+    <button class="modal__close iconbtn" id="closeQuickBtn" type="button" aria-label="Close quick view" data-icon="close"></button>
+    <div id="quickBody"></div>
+  </aside>
+
+  <!-- ============ Checkout modal ============ -->
+  <div class="overlay" id="checkoutOverlay" hidden></div>
+  <aside class="modal modal--wide js-panel" id="checkoutModal" hidden role="dialog" aria-modal="true" aria-label="Checkout">
+    <button class="modal__close iconbtn" id="closeCheckoutBtn" type="button" aria-label="Close checkout" data-icon="close"></button>
+    <div id="checkoutBody"></div>
   </aside>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <button class="totop" id="toTop" type="button" aria-label="Back to top"><span data-icon="chevronLeft"></span></button>
 
-  <main id="main-content">
-    <section class="section product-section">
+  <!-- ============ Main ============ -->
+  <main id="main">
+    <section class="section product-page">
       <div class="container">
-        <nav class="breadcrumbs" aria-label="Breadcrumb">
-          <a href="index.html">Home</a>
-          <span>/</span>
-          <a href="index.html#catalog">Catalog</a>
-          <span>/</span>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span data-icon="chevronRight"></span>
+          <a href="index.html#shop">Shop</a><span data-icon="chevronRight"></span>
           <strong id="crumbProduct">Product</strong>
         </nav>
-
-        <div id="productDetail" class="product-detail" aria-live="polite"></div>
+        <div id="productDetail" aria-live="polite"></div>
       </div>
     </section>
 
+    <!-- Reviews -->
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <div><p class="eyebrow">Customer reviews</p><h2 class="section__title">What buyers think</h2></div>
+        </div>
+        <div class="reviews" id="reviewWrap" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- Related -->
     <section class="section" id="related">
       <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">You may also like</p>
-          <h2>Related picks</h2>
-          <p>Similar pieces curated from the same style lane.</p>
+        <div class="section__head" data-reveal>
+          <div><p class="eyebrow">You may also like</p><h2 class="section__title">Complete the look</h2></div>
+          <a class="link-arrow" href="index.html#shop">Shop all <span data-icon="arrowRight"></span></a>
         </div>
-        <div class="product-grid" id="relatedGrid"></div>
+        <div class="grid grid--4" id="relatedGrid"></div>
+      </div>
+    </section>
+
+    <!-- Recently viewed -->
+    <section class="section section--soft" id="recentSection" hidden>
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <div><p class="eyebrow">Pick up where you left off</p><h2 class="section__title">Recently viewed</h2></div>
+        </div>
+        <div class="rail" id="recentGrid"></div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-row">
-      <div>
-        <p class="footer-brand">MODA Atelier</p>
-        <p>Elevated fashion for modern routines.</p>
+  <!-- ============ Footer ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="brand"><span class="brand__mark">MODA</span><span class="brand__sub">Atelier</span></span>
+        <p>Considered, editorial fashion for the way you actually live. Designed in studio, made to last.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram" data-icon="instagram"></a>
+          <a href="#" aria-label="Pinterest" data-icon="pinterest"></a>
+          <a href="#" aria-label="TikTok" data-icon="tiktok"></a>
+        </div>
       </div>
-      <div class="footer-links" aria-label="Footer links">
-        <a href="index.html#catalog">Shop</a>
-        <a href="index.html#journal">Journal</a>
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <a href="index.html#shop">Women</a>
+        <a href="index.html#shop">Men</a>
+        <a href="index.html#shop">Outerwear</a>
+        <a href="index.html#shop">Shoes</a>
+        <a href="index.html#shop">Accessories</a>
       </div>
+      <div class="footer__col">
+        <h4>Help</h4>
+        <a href="#">Shipping &amp; returns</a>
+        <a href="#">Size guide</a>
+        <a href="#">Track your order</a>
+        <a href="#">Contact us</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="index.html#lookbook">Lookbook</a>
+        <a href="index.html#values">Sustainability</a>
+        <a href="#">Our story</a>
+        <a href="#">Careers</a>
+      </div>
+    </div>
+    <div class="container footer__bar">
+      <p>© 2026 MODA Atelier. All rights reserved.</p>
+      <div class="pays"><span>VISA</span><span>MC</span><span>AMEX</span><span>PayPal</span><span>Apple Pay</span></div>
     </div>
   </footer>
 
